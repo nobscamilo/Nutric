@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 69% 35%; /* Verde glucémico #2e8b57 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 69% 35%;
+    --radius: 0.5rem;
+
+    /* Colores personalizados glucémicos */
+    --glucemic-green: 142 69% 35%; /* #2e8b57 */
+    --glucemic-green-light: 142 69% 45%; /* #3cb371 */
+    --glucemic-green-dark: 142 69% 25%; /* #1e5f3d */
+    --glucemic-yellow: 35 86% 51%; /* #f39c12 */
+    --glucemic-red: 4 90% 58%; /* #e74c3c */
+    --glucemic-panel: 120 11% 97%; /* #f8faf9 */
+    --glucemic-text: 210 29% 24%; /* #2c3e50 */
+    --glucemic-text-light: 200 18% 46%; /* #7f8c8d */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 69% 45%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 69% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Accessibility improvements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+@layer components {
+  /* Custom component styles */
+  .glucemic-button {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg;
+    @apply transition-all duration-200 ease-in-out;
+    @apply min-h-[44px] min-w-[44px];
+    @apply touch-manipulation select-none;
+    box-shadow: 0 2px 4px rgba(46, 139, 87, 0.1);
+  }
+
+  .glucemic-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 2px rgba(46, 139, 87, 0.1);
+  }
+
+  .glucemic-input {
+    @apply w-full px-3 py-3 border border-gray-200 rounded-lg;
+    @apply text-base leading-normal;
+    @apply min-h-[44px];
+    @apply focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500;
+    @apply transition-colors duration-200;
+  }
+
+  .glucemic-card {
+    @apply bg-white rounded-xl border border-green-100 shadow-sm;
+    @apply p-4 space-y-4;
+  }
+
+  .glucemic-progress-bar {
+    @apply w-full h-5 bg-green-50 rounded-full overflow-hidden;
+    @apply shadow-inner;
+  }
+
+  .glucemic-progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  .glucemic-progress-low {
+    @apply bg-gradient-to-r from-green-500 to-green-400;
+  }
+
+  .glucemic-progress-medium {
+    @apply bg-gradient-to-r from-yellow-500 to-yellow-400;
+  }
+
+  .glucemic-progress-high {
+    @apply bg-gradient-to-r from-red-500 to-red-400;
+  }
+
+  .glucemic-modal {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-end justify-center;
+    @apply z-50 animate-fade-in;
+  }
+
+  .glucemic-modal-content {
+    @apply w-full max-w-full bg-white rounded-t-2xl;
+    @apply p-5 max-h-[85vh] overflow-auto;
+    @apply animate-slide-up shadow-2xl;
+  }
+
+  @media (min-width: 640px) {
+    .glucemic-modal {
+      @apply items-center;
+    }
+    
+    .glucemic-modal-content {
+      @apply max-w-2xl rounded-xl;
+      @apply animate-none;
+    }
+  }
+
+  /* Food table styles */
+  .food-table {
+    @apply w-full border-collapse;
+    @apply bg-white rounded-lg overflow-hidden shadow-sm;
+  }
+
+  .food-table th {
+    @apply bg-green-600 text-white font-semibold text-sm;
+    @apply px-4 py-3 text-center;
+    @apply sticky top-0 z-10;
+  }
+
+  .food-table td {
+    @apply px-4 py-3 text-center border-b border-gray-100;
+    @apply text-sm;
+  }
+
+  .food-table tr:hover {
+    @apply bg-gray-50;
+  }
+
+  /* Food card styles for mobile */
+  .food-card {
+    @apply bg-white border border-gray-200 rounded-xl p-4;
+    @apply shadow-sm space-y-3;
+  }
+
+  .food-card-header {
+    @apply flex justify-between items-center pb-3;
+    @apply border-b border-gray-100;
+  }
+
+  .food-card-name {
+    @apply font-bold text-green-700 text-base;
+  }
+
+  .food-card-grid {
+    @apply grid grid-cols-2 gap-3;
+  }
+
+  .food-card-field {
+    @apply space-y-1;
+  }
+
+  .food-card-label {
+    @apply text-xs font-semibold text-gray-500 uppercase tracking-wider;
+  }
+
+  .food-card-value {
+    @apply text-sm font-semibold text-gray-900;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 1s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes bounceGentle {
+    0%, 100% { transform: translateY(-5%); }
+    50% { transform: translateY(0); }
+  }
+
+  /* Touch improvements */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Text overflow utilities */
+  .text-ellipsis-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* Gradient utilities */
+  .gradient-glucemic-green {
+    background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+  }
+
+  .gradient-glucemic-yellow {
+    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+  }
+
+  .gradient-glucemic-red {
+    background: linear-gradient(135deg, #e74c3c 0%, #e67e73 100%);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .food-table {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .food-table th {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+
+  body {
+    font-size: 12px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glucemic-button {
+    border: 2px solid currentColor;
+  }
+  
+  .food-table {
+    border: 2px solid currentColor;
+  }
+  
+  .food-card {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

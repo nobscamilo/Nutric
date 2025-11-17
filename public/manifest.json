@@ -1,0 +1,79 @@
+{
+  "name": "Calculadora Glucémica PWA",
+  "short_name": "Glucémica",
+  "description": "Calculadora glucémica PWA — perfil, modal selector, scanner, EAN mapping, export CSV/PDF",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2e8b57",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["health", "medical", "utilities"],
+  "screenshots": [
+    {
+      "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9582faf4-f5a7-4522-bc56-db808b0bfa55.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Calculadora Glucémica en escritorio"
+    },
+    {
+      "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/32dca223-ec5d-4fd1-bc3a-e58d4b70d6e0.png", 
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Calculadora Glucémica en móvil"
+    }
+  ],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20192%20192'%20fill='%232e8b57'%3E%3Ctext%20y='160'%20font-size='160'%3E🍎%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%20fill='%232e8b57'%3E%3Ctext%20y='420'%20font-size='420'%3E🍎%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512", 
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nueva comida",
+      "description": "Iniciar cálculo de nueva comida",
+      "url": "/?action=new",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2096%2096'%20fill='%232e8b57'%3E%3Ctext%20y='80'%20font-size='80'%3E➕%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Scanner",
+      "description": "Escanear código de barras",
+      "url": "/?action=scan",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2096%2096'%20fill='%232e8b57'%3E%3Ctext%20y='80'%20font-size='80'%3E📷%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+glucemica",
+      "url": "/?food=%s"
+    }
+  ]
+}
