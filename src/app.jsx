@@ -37,17 +37,29 @@ import {
   Dumbbell
 } from 'lucide-react';
 
-// --- 1. CONFIGURACIÓN FIREBASE ---
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-// CRÍTICO: Reemplaza este objeto con el que te da la consola de Firebase
-// No uses JSON.parse(__firebase_config) en Vercel, no funcionará.
-const firebaseConfig = {
-  apiKey: "TU_API_KEY_AQUI",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_PROYECTO.firebasestorage.app",
-  messagingSenderId: "TUS_NUMEROS",
-  appId: "TU_APP_ID"
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCX3euJ0bsl_wE0IiM-7KZL2i-B5IYKcdU",
+    authDomain: "nutric-b5cb5.firebaseapp.com",
+    projectId: "nutric-b5cb5",
+    storageBucket: "nutric-b5cb5.firebasestorage.app",
+    messagingSenderId: "891425941004",
+    appId: "1:891425941004:web:e9c37cf9ae4e34ffeff029",
+    measurementId: "G-XXMT0GYK6B"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 };
 
 const app = initializeApp(firebaseConfig);
