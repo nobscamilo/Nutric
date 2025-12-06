@@ -52,8 +52,8 @@ import {
     projectId: "nutric-b5cb5",
     storageBucket: "nutric-b5cb5.firebasestorage.app",
     messagingSenderId: "891425941004",
-    appId: "1:891425941004:web:e9c37cf9ae4e34ffeff029",
-    measurementId: "G-XXMT0GYK6B"
+    appId: "1:891425941004:web:258cb1cbaebfe53aeff029",
+    measurementId: "G-91F2TN45DY"
   };
 
   // Initialize Firebase
